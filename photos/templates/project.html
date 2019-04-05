@@ -6,7 +6,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="card">
-                <h3 class="text-center">{{project.project_title}}</h3>
+                <h3 class="text-center">{{project.title}}</h3>
                 <hr>
                 <div class="text-center card-text">
                     <a href="{% url 'project' project.pk %}" data-toggle="modal" data-target="#{{project.id}}" class="btn btn-outline-info btn-md">Vote</a>
@@ -33,10 +33,10 @@
                             </div>
                         </div>
                     </div>
-                    <a target="_blank" href="{{project.live_site}}" class="btn btn-outline-info btn-md">Visit Site</a>
+                    <a target="_blank" href="{% url 'photosToday' %}" class="btn btn-outline-info btn-md">Back home</a>
                     <div class="col-md-2"></div>
                     {% autoescape on%}
-                    <p class="text-center">{{project.project_description | safe}}</p>
+                    <p class="text-center">{{project.description | safe}}</p>
                     {% endautoescape%}
                     <div class="row">
                         <div class="col-md-3"></div>
