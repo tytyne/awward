@@ -12,7 +12,7 @@
         <div class="col-md-4"></div>
     </div>
     {% autoescape on%}
-    <p class="text-center">{{project.project_description | safe}}</p>
+    <p class="text-center">{{project.description | safe}}</p>
     {% endautoescape%}
     <p class="text-center">Design: {{project.design}}</p>
     <p class="text-center">Usability: {{project.usability}}</p>
