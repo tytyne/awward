@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Image,tags
+from .models import Project,tags
 # Register your models here.
 
-class ImageAdmin(admin.ModelAdmin):
+class ProjectAdmin(admin.ModelAdmin):
     filter_horizontal =('tags',)
 
 # admin.site.register(User)
-admin.site.register(Image,ImageAdmin)
+admin.site.register(Project,ProjectAdmin)
 admin.site.register(tags)

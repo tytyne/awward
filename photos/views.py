@@ -3,9 +3,9 @@
 from django.contrib.auth.decorators import login_required
 import datetime as dt
 from django.shortcuts import render
-from .models import Image,Profile
+from .models import Project,Profile
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from . forms import PhotosLetterForm,PhotoImageForm,ProfileUploadForm
+from . forms import PhotosLetterForm,PhotoImageForm,ProfileUploadForm,VoteForm
 from .models import PhotosLetterRecipients
 from .email import send_welcome_email
 from django.shortcuts import redirect
@@ -59,7 +59,7 @@ def convert_dates(dates):
 def photos_today(request):
     date = dt.date.today()
     form = PhotosLetterForm()
-    photos=Image.todays_photos()
+    photos=Project.todays_photos()
    
     if request.method == 'POST':
         form = PhotosLetterForm(request.POST)
@@ -90,13 +90,13 @@ def past_days_photos(request, past_date):
     if date == dt.date.today():
         return redirect(photos_today)
 
-    photos = Image.days_photos(date)
+    photos = Project.days_photos(date)
     return render(request, 'all-photos/past-photos.html',{"date": date,"photos":photos})    
 def search_results(request):
 
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_images = Image.search_by_title(search_term)
+        searched_images = Project.search_by_title(search_term)
         message = f"{search_term}"
 
         return render(request, 'all-photos/search.html',{"message":message,"images": searched_images})
@@ -169,6 +169,29 @@ def upload_profile(request):
 
 
     return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
+
+
+
+
+@login_required(login_url='/accounts/login/')
+def submit_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            project = Project(project_title=request.POST['project_title'],landing_page=request.FILES['landing_page'],project_description=request.POST['project_description'],live_site=request.POST['live_site'],user=request.user)
+            project.save()
+            return redirect(reverse('index'))
+    else:
+        form = NewProjectForm()
+
+    return render(request,'submit_project.html',{'form':form}) 
+
+
+
+
+
 
 @login_required(login_url='/accounts/login/')    
 def add_comment(request, image_id):

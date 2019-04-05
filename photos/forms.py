@@ -1,12 +1,12 @@
 from django import forms
-from .models import Image,Profile,User,Comment
+from .models import Project,Profile,User,Comment
 
 class PhotosLetterForm(forms.Form):
     your_name = forms.CharField(label='First Name',max_length=30)
     email = forms.EmailField(label='Email')
 class PhotoImageForm(forms.ModelForm):
     class Meta:
-        model = Image
+        model = Project
         exclude = ['user', 'pub_date', 'tags']
 class ProfileUploadForm(forms.ModelForm):
 	class Meta:

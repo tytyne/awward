@@ -23,7 +23,7 @@ class tags(models.Model):
     def __str__(self):
         return self.name
 from tinymce.models import HTMLField
-class Image(models.Model):
+class Project(models.Model):
     title = models.CharField(max_length=60)
     post = HTMLField()
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
@@ -35,7 +35,7 @@ class Image(models.Model):
     content = models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
     vote_submissions = models.IntegerField(default=0)
 
-    
+
     @classmethod
     def todays_photos(cls):
         today = dt.date.today()
@@ -110,22 +110,8 @@ class Comment(models.Model):
         db_table = "comments"
  
     path = ArrayField(models.IntegerField())
-    image_id = models.ForeignKey(Image)
+    image_id = models.ForeignKey(Project)
     user_id = models.ForeignKey(User)
     content = models.TextField('Comment')
     pub_date = models.DateTimeField('Date of comment')
  
-    def __str__(self):
-        return self.content[0:200]
- 
-    def get_offset(self):
-        level = len(self.path) - 1
-        if level > 5:
-            level = 5
-        return level
- 
-    def get_col(self):
-        level = len(self.path) - 1
-        if level > 5:
-            level = 5
-        return 12 - level
