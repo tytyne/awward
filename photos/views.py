@@ -2,6 +2,7 @@
 
 from django.contrib.auth.decorators import login_required
 import datetime as dt
+from django.urls import reverse
 from django.shortcuts import render
 from .models import Project,Profile
 from django.http import HttpResponse,Http404,HttpResponseRedirect
@@ -136,7 +137,7 @@ def project(request,project_id):
             return redirect(reverse('project',args=[project.id]))
     else:
         form = VoteForm()
-    return render(request,'photo_image.html',{'form':form,'project':project})
+    return render(request,'project.html',{'form':form,'project':project})
 
 class ProfileList(APIView):
     def get(self,request,format=None):
