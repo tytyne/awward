@@ -9,6 +9,10 @@ from . forms import PhotosLetterForm,PhotoImageForm,ProfileUploadForm,VoteForm
 from .models import PhotosLetterRecipients
 from .email import send_welcome_email
 from django.shortcuts import redirect
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer,ProjectSerializer
+
 
 
 # Create your views here.
@@ -195,7 +199,7 @@ def project(request,project_id):
     else:
         form = VoteForm()
     return render(request,'project.html',{'form':form,'project':project})
-    
+
 class ProfileList(APIView):
     def get(self,request,format=None):
         all_users = UserProfile.objects.all()
