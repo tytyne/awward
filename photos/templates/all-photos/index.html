@@ -35,40 +35,42 @@
                 </div>
             </div>
 
+            <div class="container">
+                <div class="row">
+                    <!-- modal3 -->
+                    {% for photos_item in OK %}
+                    <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#flipFlop">
 
-            <!-- modal3 -->
-            {% for photos_item in OK %}
-            <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#flipFlop">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{photos_item.image_image.url}}">
-                </div>
-            </div>
-            <!-- hell -->
-            <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="modalLabel">Flip-flop</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{photos_item.image_image.url}}">
+
+                    </div>
+                    <!-- hell -->
+                    <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modalLabel">Flip-flop</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="{{photos_item.image_image.url}}" style="width:450px; height:500px;" alt="Image">
-                            <br>
-                            <h5><strong>Description:</strong>"{{photos_item.post}}"</h5>
-                            <h5><strong>Taken in:</strong>"{{photos_item.location}}"</h5>
-                            <h5><strong>Category:</strong>"{{photos_item.category}}"</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{photos_item.image_image.url}}" style="width:450px; height:500px;" alt="Image">
+                                    <br>
+                                    <h5><strong>Description:</strong>"{{photos_item.post}}"</h5>
+                                    <h5><strong>Taken in:</strong>"{{photos_item.location}}"</h5>
+                                    <h5><strong>Category:</strong>"{{photos_item.category}}"</h5>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         {% endfor %}
 
     </section>
@@ -168,24 +170,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
-                    <!-- <a href="#">
-                        <img class="img-fluid d-block mx-auto" src="media/img/logos/envato.jpg" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img class="img-fluid d-block mx-auto" src="media/img/logos/designmodo.jpg" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img class="img-fluid d-block mx-auto" src="media/img/logos/themeforest.jpg" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img class="img-fluid d-block mx-auto" src="media/img/logos/creative-market.jpg" alt="">
-                    </a> -->
+
                 </div>
             </div>
         </div>
