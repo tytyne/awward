@@ -60,9 +60,12 @@
                                 <div class="modal-body">
                                     <img src="{{project.image_image.url}}" style="width:450px; height:500px;" alt="Image">
                                     <br>
-                                    <h4>Design: {{project.design}}</h4>
-                                    <h4>Usability: {{project.usability}}</h4>
-                                    <h4>Content: {{project.content}}</h4>
+                                    <a href="{% url 'project' project.pk %}" class="btn">See More</a></button>
+                                    <p>Project link: <a target="_blank" href="{{project.live_site}}">{{project.live_site}}</a> </p>
+                                    <ul>
+                                        <h4>Design: {{project.design}}</h4>
+                                        <h4>Usability: {{project.usability}}</h4>
+                                        <h4>Content: {{project.content}}</h4>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
