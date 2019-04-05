@@ -1,0 +1,22 @@
+{%extends 'all-photos/base.html'%} {% load bootstrap4 %} {% block content %}<br><br><br>
+
+<div class="container">
+    <h3 class="text-center">{{project.project_title}}</h3>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <img src="{{project.landing_page.url}}" alt="" height="400" width="400" style="border-radius:50px"><br><br>
+            <button type="button" class="btn btn-outline-success">
+                <a target="_blank" href="{{project.live_site}}" class="btn">Visit Site</a></button>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    {% autoescape on%}
+    <p class="text-center">{{project.project_description | safe}}</p>
+    {% endautoescape%}
+    <p class="text-center">Design: {{project.design}}</p>
+    <p class="text-center">Usability: {{project.usability}}</p>
+    <p class="text-center">Content: {{project.content}}</p>
+    <p class="text-center">By <span>{{project.user.username}}</span></p>
+</div>
+{% endblock %}

@@ -195,11 +195,19 @@ def project(request,project_id):
     else:
         form = VoteForm()
     return render(request,'project.html',{'form':form,'project':project})
-
-
-
-
     
+class ProfileList(APIView):
+    def get(self,request,format=None):
+        all_users = UserProfile.objects.all()
+        serializers = ProfileSerializer(all_users,many=True)
+        return Response(serializers.data)
+
+class ProjectList(APIView):
+    def get(self,request,format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects,many=True)
+        return Response(serializers.data)
+
 
 @login_required(login_url='/accounts/login/')
 def submit_project(request):
