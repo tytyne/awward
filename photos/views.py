@@ -37,19 +37,16 @@ def photos_today(request):
 
 
        
-def search_results(request):
+def search_project(request):
+    try:
+        if 'project' in request.GET and request.GET['project']:
+            searched_term = (request.GET.get('project')).title()
+            searched_project = Project.objects.get(project_title__icontains = searched_term.title())
+            return render(request,'search.html',{'project':searched_project})
+    except (ValueError,Project.DoesNotExist):
+        raise Http404()
 
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_images = Project.search_by_title(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'all-photos/search.html',{"message":message,"images": searched_images})
-
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'all-photos/search.html',{"message":message}) 
-
+    return render(request,'search.html')
 @login_required(login_url='/accounts/login/')
 def image(request, image_id):      
 
