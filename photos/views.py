@@ -171,7 +171,35 @@ def upload_profile(request):
     return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
 
 
+@login_required(login_url='/accounts/login/')
+def project(request,project_id):
+    project = Project.objects.get(id=project_id)
+    if request.method == 'POST':
+        form = VoteForm(request.POST)
+        if form.is_valid:
+            project.vote_submissions += 1
+            if project.design == 0:
+                project.design = int(request.POST['design'])
+            else:
+                project.design = (project.design + int(request.POST['design']))/2
+            if project.usability == 0:
+                project.usability = int(request.POST['usability'])
+            else:
+                project.usability = (project.design + int(request.POST['usability']))/2
+            if project.content == 0:
+                project.content = int(request.POST['content'])
+            else:
+                project.content = (project.design + int(request.POST['content']))/2
+            project.save()
+            return redirect(reverse('project',args=[project.id]))
+    else:
+        form = VoteForm()
+    return render(request,'project.html',{'form':form,'project':project})
 
+
+
+
+    
 
 @login_required(login_url='/accounts/login/')
 def submit_project(request):
