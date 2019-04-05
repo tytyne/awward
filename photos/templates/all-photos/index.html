@@ -38,10 +38,10 @@
             <div class="container">
                 <div class="row">
                     <!-- modal3 -->
-                    {% for photos_item in OK %}
+                    {% for project in projects %}
                     <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#flipFlop">
 
-                        <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{photos_item.image_image.url}}">
+                        <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{project.image_image.url}}">
 
                     </div>
                     <!-- hell -->
@@ -55,12 +55,11 @@
                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{photos_item.image_image.url}}" style="width:450px; height:500px;" alt="Image">
+                                    <img src="{{project.image_image.url}}" style="width:450px; height:500px;" alt="Image">
                                     <br>
-                                    <h5><strong>Description:</strong>"{{photos_item.post}}"</h5>
-                                    <h5><strong>Taken in:</strong>"{{photos_item.location}}"</h5>
-                                    <h5><strong>Category:</strong>"{{photos_item.category}}"</h5>
-
+                                    <h4>Design: {{project.design}}</h4>
+                                    <h4>Usability: {{project.usability}}</h4>
+                                    <h4>Content: {{project.content}}</h4>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -8,12 +8,15 @@ urlpatterns=[
     url(r'^$',views.photos_today,name='photosToday'),
     url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_photos,name = 'pastphotos'),
     url(r'^search/', views.search_results, name='search_results'),   
-    url(r'^image/(\d+)',views.image,name ='image'),
     url(r'^photo/image$', views.photo_image, name='photo_image'),   
     url(r'^upload/profile', views.upload_profile, name='upload_profile'),
     url(r'^profile/', views.profile, name='profile'),
     url(r'^comment/(?P<article_id>[0-9]+)/$', views.add_comment, name='add_comment'),
-    
+    #  url(r'^search/',views.search_project,name='search_project'),
+    url(r'^project/(\d+)',views.project,name='project'),
+    url(r'^api/profiles/$',views.ProfileList.as_view(),name='profile_list'),
+    url(r'^api/projects/$',views.ProjectList.as_view(),name='project_list'),
+
  
 ]
 if settings.DEBUG:
