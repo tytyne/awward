@@ -1,4 +1,4 @@
-{%extends 'all-photos/base.html'%}{% load bootstrap4 %} {% load static %}
+{% load bootstrap4 %} {% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -13,6 +13,9 @@
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Rate</title>
     {% block styles %} {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}"> {% endblock %}
@@ -22,124 +25,53 @@
     {% include "navbar.html" %} {% include "body.html" %}
 
     <!-- Portfolio Grid -->
-    <section class="bg-light" id="portfolio">
+
+    <section class="bg-light">
         <div class="container">
             <div class="row">
-                <!-- Portfolio Modals -->
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Projects</h2>
+                    <h3 class="section-subheading text-muted">list of all created project.</h3>
+                </div>
+            </div>
 
-                <h1 class="text-center">Photo Gallery</h1>
-                <div class="row">
 
-                    {% for photos_item in OK %}
-                    <div class="col-md-4">
-                        <a data-toggle="modal" data-target="#{{photos_item.id}}">
-                            <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{photos_item.image_image.url}}">
-                        </a>
-                        <!-- Modal -->
+            <!-- modal3 -->
+            {% for photos_item in OK %}
+            <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#flipFlop">
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{photos_item.image_image.url}}">
+                </div>
+            </div>
+            <!-- hell -->
+            <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modalLabel">Flip-flop</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{photos_item.image_image.url}}" style="width:450px; height:500px;" alt="Image">
+                            <br>
+                            <h5><strong>Description:</strong>"{{photos_item.post}}"</h5>
+                            <h5><strong>Taken in:</strong>"{{photos_item.location}}"</h5>
+                            <h5><strong>Category:</strong>"{{photos_item.category}}"</h5>
 
-                        <div class="modal fade" id="{{photos_item.id}}" role="dialog">
-                            <div style="max-width:100%; max-height:100%; padding-top:100px;" class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title"><strong>Title:</strong>"{{photos_item.title}}"</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img src="{{photos_item.image_image.url}}" style="width:570px; height:500px;" alt="Image">
-                                        <br>
-                                        <h5><strong>Description:</strong>"{{photos_item.post}}"</h5>
-                                        <h5><strong>Taken in:</strong>"{{photos_item.location}}"</h5>
-                                        <h5><strong>Category:</strong>"{{photos_item.category}}"</h5>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input class="form-control input-lg" type="text" value="{{photos_item.image_image.url}}" id="{{photos_item.id}}-url">
-                                        <button class="btn btn-outline-info" onclick="copyUrl('{{photos_item.id}}-url')">Copy Image
-                                            Url</button>
-                                        <br>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:rgb(105, 164, 168);color:white" ;>Close</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            {% endfor %}
-                            <div class="col-md-4 col-sm-6 portfolio-item">
-                                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus fa-3x"></i>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="media/img/portfolio/02-thumbnail.jpg" alt="">
-                                </a>
-                                <div class="portfolio-caption">
-                                    <h4>Explore</h4>
-                                    <p class="text-muted">Graphic Design</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 portfolio-item">
-                                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus fa-3x"></i>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="media/img/portfolio/03-thumbnail.jpg" alt="">
-                                </a>
-                                <div class="portfolio-caption">
-                                    <h4>Finish</h4>
-                                    <p class="text-muted">Identity</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 portfolio-item">
-                                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus fa-3x"></i>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="media/img/portfolio/04-thumbnail.jpg" alt="">
-                                </a>
-                                <div class="portfolio-caption">
-                                    <h4>Lines</h4>
-                                    <p class="text-muted">Branding</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 portfolio-item">
-                                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus fa-3x"></i>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="media/img/portfolio/05-thumbnail.jpg" alt="">
-                                </a>
-                                <div class="portfolio-caption">
-                                    <h4>Southwest</h4>
-                                    <p class="text-muted">Website Design</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 portfolio-item">
-                                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content">
-                                            <i class="fas fa-plus fa-3x"></i>
-                                        </div>
-                                    </div>
-                                    <img class="img-fluid" src="media/img/portfolio/06-thumbnail.jpg" alt="">
-                                </a>
-                                <div class="portfolio-caption">
-                                    <h4>Window</h4>
-                                    <p class="text-muted">Photography</p>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
     </section>
-
-
     <!-- Team -->
     <section class="bg-light" id="team">
         <div class="container">
@@ -344,7 +276,6 @@
             </div>
         </div>
     </footer>
-
 
 
     <!-- Bootstrap core JavaScript -->
