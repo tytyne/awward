@@ -139,7 +139,7 @@ def project(request,project_id):
             return redirect(reverse('project',args=[project.id]))
     else:
         form = VoteForm()
-    return render(request,'project.html',{'form':form,'project':project})
+    return render(request,'photo_image.html',{'form':form,'project':project})
 
 class ProfileList(APIView):
     def get(self,request,format=None):
