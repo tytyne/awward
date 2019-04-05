@@ -1,7 +1,15 @@
 <!-- Brand and toggle get grouped for better mobile display -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1" style="background-color:#fed136">
     <a class="navbar-brand" href="{% url 'photosToday' %}">HOME</a>
-
+    <li class="nav-item dropdown show">
+        <a style="color:#fff;" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        APIs
+    </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a href="{% url 'profile_list' %}" class="dropdown-item">Users API</a>
+            <a href="{% url 'project_list' %}" class="dropdown-item">Projects API</a>
+        </div>
+    </li>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,15 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
-            <li class="nav-item dropdown show">
-                <a style="color:#fff;" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        APIs
-    </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a href="{% url 'profile_list' %}" class="dropdown-item">Users API</a>
-                    <a href="{% url 'project_list' %}" class="dropdown-item">Projects API</a>
-                </div>
-            </li>
+
 
 
             {% if user.is_authenticated %}

@@ -39,12 +39,12 @@
             </div>
 
 
-
-            <!-- modal3 -->
-            {% for project in OK %}
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-sm-4 portfolio-item">
+                    <!-- modal3 -->
+                    {% for project in OK %}
+
+                    <div class="col-md-4 col-sm-6 portfolio-item">
                         <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#flipFlop">
 
                             <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{project.image_image.url}}">
@@ -57,7 +57,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <div class="col-md-4 col-sm-6 portfolio-item"></div>
-                                        <h4 class="modal-title" id="modalLabel">{{project.project_title}}</h4>
+                                        <h4 class="modal-title" id="modalLabel">{{project.title}}</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -81,14 +81,11 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
         </div>
-
-    </section>
-    {% endfor %}
-
     </section>
     <!-- Team -->
     <section class="bg-light" id="team">
