@@ -24,4 +24,8 @@ class CommentForm(forms.Form):
         label="",
         widget=forms.Textarea
     )
+class VoteForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('design','usability','content')
                  
